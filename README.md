@@ -1,19 +1,43 @@
-# Water Quality Monitoring Optimization
+# 水质监测优化系统 - 基于人类活动强度的点位选择
 
-This repository contains the code and data used in the study "Water Quality Monitoring Optimization Based on Human Activity Intensity: A Case Study of the Ganjiang River Basin."
+本项目旨在基于人类活动强度数据，利用遗传算法对水质监测点进行优化选址，以提升监测效率和覆盖度。项目通过多个脚本实现数据预处理、缓冲区构建、候选点筛选及最终点位选择等一系列流程。
 
-## Software information
-- Programming language: Python 3.9
-- Required packages: geopandas, shapely, pandas, numpy, matplotlib
-- GIS environment: ArcGIS 10.8 (optional for shapefile processing)
+## 项目结构说明
+- .
+  ├── GA/                         # 遗传算法执行相关脚本（不同场景的点位重插入）
+  │   ├── 遗传算法执行-全部重插入-保留已有点.ipynb
+  │   ├── 遗传算法执行-全部重插入-求阈值.ipynb
+  │   └── ...
+  │
+  ├── data/                       # 数据目录（含原始栅格、人类活动强度等）
+  │
+  ├── result/                     # 结果输出目录
+  │   ├── 全部重插入/
+  │   ├── 求阈值/
+  │   └── 阈值去除已有点/
+  │
+  ├── script/                     # 数据处理与空间分析脚本
+  │   ├── 切割人类活动栅格数据.ipynb
+  │   ├── 处理候选点.ipynb
+  │   ├── 找到阈值前后相近的点.ipynb
+  │   ├── 河流缓冲区生成.ipynb
+  │   ├── 生成候选点.ipynb
+  │   ├── 缓冲区生成湖泊.ipynb
+  │   ├── 缓冲区生成河流.ipynb
+  │   └── 计算相关值.ipynb
+  │
+  ├── README.md                   # 项目说明文件
 
-## How to use
-1. Install required Python packages.
-2. Run `main.py` to reproduce the data analysis and optimization results.
+## 快速开始
+1. 确保环境中已安装所需 Python 库，如 `geopandas`, `rasterio`, `numpy`, `matplotlib` 等；
+2. 运行 `script/ 目录下的预处理脚本，准备候选点数据；
+3. 根据需求选择 `GA/` 目录下对应的遗传算法执行脚本；
+4. 查看 `result/` 文件夹中的输出结果。
 
-## Data
-- Input data include river network shapefiles, discharge point data, and human activity intensity raster.
-- Processed data are available in the `data/` folder.
+##  注意事项
+- `data/` 目录中的部分大文件（如 HF 栅格）建议使用 Git LFS 管理；
+- 如果运行某些脚本报错，可能需要根据本地路径调整文件读取位置
+- 脚本中的部分分析假设基于 Ganjiang River，请根据研究区域做适配调整。
 
-## Contact
-For any questions, please contact: [your_email@example.com]
+## 联系方式
+有任何疑问，请联系: [2322091001@stu.xmut.edu.cn]
